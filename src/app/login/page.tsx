@@ -28,7 +28,7 @@ export default function Demo() {
   function handlePasswordChange(e: React.ChangeEvent<HTMLInputElement>) {
     setPassword(e.target.value);
   }
-  function handlePasswordToggle(){
+  function handlePasswordToggle() {
     setShowPassword(!showPassword);
   }
 
@@ -50,6 +50,7 @@ export default function Demo() {
     else {
       setErrMsg(res.data.message)
       setPassword("");
+      setShowPassword(false);
       button?.removeAttribute("disabled");
     }
   }
@@ -63,8 +64,8 @@ export default function Demo() {
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" onSubmit={handleFormSubmit}>
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert" style={{ display: !errorMsg ? "none" : "flex" }}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6 mx-2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mx-2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
             </svg>
             <span className="block sm:inline">{errorMsg}</span>
             <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => setErrMsg("")}>
@@ -86,8 +87,8 @@ export default function Demo() {
               </div>
             </div>
             <div className="mt-2">
-              <input id="password" name="password" type={showPassword?"text":"password"} onChange={handlePasswordChange} value={password} required className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-              <input type="checkbox" name="" id="showPassword" onChange={handlePasswordToggle} /> <span className="mx-1 text-sm font-medium">Show password</span>
+              <input id="password" name="password" type={showPassword ? "text" : "password"} onChange={handlePasswordChange} value={password} required className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+              <input type="checkbox" name="" id="showPassword" onChange={handlePasswordToggle} checked={showPassword} /> <span className="mx-1 text-sm font-medium">Show password</span>
             </div>
           </div>
 

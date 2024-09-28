@@ -28,7 +28,7 @@ export default function Demo() {
   function handleFullNameChange(e: React.ChangeEvent<HTMLInputElement>) {
     setFullName(e.target.value);
   }
-  function handlePasswordToggle(){
+  function handlePasswordToggle() {
     setShowPassword(!showPassword);
   }
 
@@ -42,6 +42,7 @@ export default function Demo() {
       setErrMsg("Password and Confirm Password donot match")
       setPassword("")
       setConfirmPassword("")
+      setShowPassword(false);
       button?.removeAttribute("disabled");
       return
     }
@@ -60,6 +61,7 @@ export default function Demo() {
       setErrMsg(res.data.message)
       setPassword("");
       setConfirmPassword("");
+      setShowPassword(false);
       button?.removeAttribute("disabled");
     }
   }
@@ -95,15 +97,15 @@ export default function Demo() {
           <div>
             <label htmlFor="password" className="block text-sm font-bold leading-6 text-gray-900">Password</label>
             <div className="mt-2">
-              <input id="password" name="password" type={showPassword?"text":"password"} onChange={handlePasswordChange} value={password} required className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-              <input type="checkbox" name="" id="showPassword" onChange={handlePasswordToggle}  /> <span className="mx-1 text-sm font-medium">Show password</span>
+              <input id="password" name="password" type={showPassword ? "text" : "password"} onChange={handlePasswordChange} value={password} required className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+              <input type="checkbox" name="" id="showPassword" onChange={handlePasswordToggle} checked={showPassword} /> <span className="mx-1 text-sm font-medium">Show password</span>
             </div>
           </div>
 
           <div>
             <label htmlFor="confirmPassword" className="block text-sm font-bold leading-6 text-gray-900">Confirm Password</label>
             <div className="mt-2">
-              <input id="confirmPassword" name="confirmPassword" type={showPassword?"text":"password"} onChange={handleConfirmPasswordChange} value={confirmPassword} required className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+              <input id="confirmPassword" name="confirmPassword" type={showPassword ? "text" : "password"} onChange={handleConfirmPasswordChange} value={confirmPassword} required className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
             </div>
           </div>
 
