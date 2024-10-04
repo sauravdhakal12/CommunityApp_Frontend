@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CommunityApp (Frontend)
+
+## Overview
+**CommunityApp** is an online learning platform that allows users to share various courses, both paid and free, with other learners. Inspired by platforms like Udemy, CommunityApp aims to facilitate seamless learning experiences while also providing a group chat feature for easy interaction among all learners in a course.
+
+## Features
+- **Course Sharing**: Users can share and access a variety of courses.
+- **Paid and Free Options**: Support for both paid and free courses.
+- **Group Chat Feature**: Enables real-time interaction among all learners of a course, fostering a community learning environment.
+
+## Technologies Used
+- **Frontend**: Next.js
+- **Backend**: Express.js
+- **Database**: PostgreSQL
+- **Styling**: Tailwind CSS
 
 ## Getting Started
+To get a local copy up and running, follow these steps:
 
-First, run the development server:
+### Prerequisites
+- [Node.js](https://nodejs.org/en/) installed on your machine
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) for package management
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/sauravdhakal12/CommunityApp_Frontend
+    ```
+    
+2. Navigate to project directory
+    ```bash
+    cd CommunityApp_Frontend
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Install necessary dependencies
+    ```bash
+    npm install
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Setup backend for the app [Backend](https://github.com/sauravdhakal12/CommunityApp).
+5. Run the development server
+    ```bash
+    npm run dev
+    ```
+    
+# Contributing
+As I am also on my learning journey, Feedback or collaboration! are most welcome. Feel free to open an issue or submit a pull request.
