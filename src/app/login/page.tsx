@@ -12,16 +12,18 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 // Remove outline from input fields
-// import "@/global.css";
+import "@/global.css";
 
 export default function Demo() {
   const router = useRouter();
 
+  // State variables related to input fields
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrMsg] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  // Functions to handle state change
   function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
     setEmail(e.target.value);
   }
@@ -35,20 +37,33 @@ export default function Demo() {
   async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    // Disable login button
     const button = document.querySelector("#login");
     button?.setAttribute("disabled", "true");
 
-    const res = await axios.post("http://localhost:4000/user/auth/login", {
-      email: email,
-      password: password
-    }, {
-      withCredentials: true,
-    });
+    try {
 
-    if (res.data.success)
-      router.push("/");
-    else {
-      setErrMsg(res.data.message)
+      // Send auth credentials to /login route
+      const res = await axios.post("https://localhost:4000/user/auth/login", {
+        email: email,
+        password: password
+      }, {
+        withCredentials: true,
+      });
+
+      // If success then redirect else console error
+      if (res.data.success)
+        router.push("/");
+      else
+        setErrMsg(res.data.message)
+    }
+    catch (err) {
+      console.log(err);
+      setErrMsg("Something went wrong");
+    }
+    finally {
+
+      // Clear input fields and remove disabled attribute
       setPassword("");
       setShowPassword(false);
       button?.removeAttribute("disabled");

@@ -9,6 +9,7 @@ import "@/global.css";
 export default function Demo() {
   const router = useRouter();
 
+  // State variables related to input fields
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,6 +17,7 @@ export default function Demo() {
   const [errorMsg, setErrMsg] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  // Functions to handle state change
   function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
     setEmail(e.target.value);
   }
@@ -35,32 +37,42 @@ export default function Demo() {
   async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    // Diable signup button
     const button = document.querySelector("#signup");
     button?.setAttribute("disabled", "true");
 
-    if (password !== confirmPassword) {
-      setErrMsg("Password and Confirm Password donot match")
+    try {
+
+      // Ensure password and confirm password match
+      if (password !== confirmPassword) {
+        setErrMsg("Password and Confirm Password donot match")
+        return
+      }
+
+      // Send auth credentials to /signup route
+      const res = await axios.post("https://localhost:4000/user/auth/register", {
+        name: fullName,
+        email: email,
+        password: password
+      }, {
+        withCredentials: true,
+      });
+
+      // If success then redirect else console error
+      if (res.data.success)
+        router.push("/");
+      else {
+        setErrMsg(res.data.message)
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+    finally {
+
+      // Clear input fields and remove disabled attribute
       setPassword("")
       setConfirmPassword("")
-      setShowPassword(false);
-      button?.removeAttribute("disabled");
-      return
-    }
-
-    const res = await axios.post("http://localhost:4000/user/auth/register", {
-      name: fullName,
-      email: email,
-      password: password
-    }, {
-      withCredentials: true,
-    });
-
-    if (res.data.success)
-      router.push("/");
-    else {
-      setErrMsg(res.data.message)
-      setPassword("");
-      setConfirmPassword("");
       setShowPassword(false);
       button?.removeAttribute("disabled");
     }
